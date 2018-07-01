@@ -1,0 +1,18 @@
+layout
+
+Above the fold parallax image of bourdain
+
+3x3 grid with quote in the middle.
+O will be the s
+
+X's will be images or graphics
+
+XXX
+XOX
+XXX
+
+twitter feed at the bottom.
+social media links at the bottom middle.
+text saying powpow at the bottom left.
+
+credit modal bottom right accessed via link.
