@@ -10,8 +10,7 @@ html {
 }
 
 .pimg1,
-.pimg2,
-.pimg3 {
+.pimg2 {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
@@ -28,12 +27,7 @@ html {
 
 .pimg2 {
   background-image: url(images/vietnam.jpg);
-  min-height: 400px;
-}
-
-.pimg3 {
-  background-image: url(images/spicy.jpg);
-  min-height: 400px;
+  min-height: 600px;
 }
 
 .section {
@@ -60,6 +54,9 @@ html {
   padding: 20px;
 }
 
-.ptext .border.trans {
-  background-color: transparent;
+/* Grid Styling*/
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
