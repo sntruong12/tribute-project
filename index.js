@@ -1,30 +1,26 @@
-console.log("hello");
+console.log("I'm running now!");
 
-// Twitter API call to get recent tweets
+var Twit = require('twit');
+var config = require('./config.js');
 
-var randomString = function(length) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for(var i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
-}
+var T = new Twit(config);
 
-console.log(randomString(33));
+//  look into making this block of code it's own module
+//  search twitter for all tweets containing specified words
+//
 
-var twitterSearchUrl = 'https://api.twitter.com/1.1/search/tweets.json?q=anthony+bourdain&lang=en&result_type=recent&count=5';
+var params = {
+  q: '#AnthonyBourdain',
+  count: 5
+};
 
-var twitterHeaders = {
-  Authorization: {
-    oauth_consumer_key='',
-    oauth_nonce=randomString(33);
-    oauth_signature=
-    oauth_signature_method=HMAC-SHA1
-    oauth_timestamp=
-    oauth_token=
-    oauth_version=1.0
+T.get('search/tweets', params, gotTweets);
+
+function gotTweets(err, data, response) {
+  var tweets = data.statuses;
+
+  for (var i = 0; i < tweets.length; i++) {
+    console.log(`Tweet #${i+1}: ${tweets[i].text} -@${tweets[i].user.screen_name}`);
   }
-}
 
-fetch()
+};
