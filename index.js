@@ -43,7 +43,8 @@ var T = new Twit(config);
 
 var mediaParams = {
   screen_name: 'Bourdain',
-  count: 100,
+  count: 200,
+  tweet_mode: 'extended',
   exclude_replies: true,
   include_rts: false
 };
@@ -55,16 +56,22 @@ T.get('statuses/user_timeline', mediaParams, gotMedia);
 function gotMedia(err, data, response) {
   // mediaUrl = data[0].entities.media[0].media_url_https;
   // console.log(mediaUrl);
-  var returnedTweets = data.length
+  var returnedTweets = data.length;
   console.log(returnedTweets + " tweets in this response");
 
+  // for (var i = 0; i < returnedTweets; i++) {
+  //   if (data[i].entities.hasOwnProperty('media')) {
+  //     console.log(`Tweet #${i+1} has an image located at this link - ${data[i].entities.media[0].media_url_https}`);
+  //     mediaUrlArray.push(data[i].entities.media[0].media_url_https);
+  //   }
+  // }
+
   for (var i = 0; i < returnedTweets; i++) {
-    if (data[i].entities.hasOwnProperty('media')) {
-      console.log(`Tweet #${i+1} has an image located at this link - ${data[i].entities.media[0].media_url_https}`);
-      mediaUrlArray.push(data[i].entities.media[0].media_url_https);
+    if (data[i].hasOwnProperty('extended_entities') && data[i].extended_entities.media[0].type === 'photo') {
+      console.log(`Tweet#${i+1} has the extended_entities prop`);
+      mediaUrlArray.push(data[i].extended_entities.media[0].media_url_https);
     }
+    console.log(i);
   }
-
   console.log(mediaUrlArray);
-
 };
