@@ -32,7 +32,7 @@ html {
 
 .section {
   text-align: center;
-  padding: 50px 80px;
+  padding: 20px 20px;
   background-color: #f4f4f4;
   color: #666;
 }
@@ -48,15 +48,75 @@ html {
   text-transform: uppercase;
 }
 
-.ptext .border {
+/*Text over the parallax images*/
+
+.ptext .border1 {
   background-color: #111;
   color: #fff;
   padding: 20px;
 }
 
-/* Grid Styling*/
+.ptext .border2 {
+  background-color: #111;
+  color: #fff;
+  padding: 20px;
+}
+
+/* Grid setup for desktop*/
 
 .grid-wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+  "quotes pics pics tweets"
+  "quotes pics pics tweets";
+}
+
+/* Grid Template Areas setup*/
+
+.cell-one {
+  grid-area: quotes;
+}
+
+.cell-two {
+  grid-area: pics;
+}
+
+.cell-three {
+  grid-area: tweets;
+}
+
+/*Grid setup for medium devices*/
+
+@media only screen and (max-width: 750px) {
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+    "quotes pics pics"
+    "tweets tweets tweets";
+  }
+
+  .ptext .border2 {
+    display: none;
+  }
+}
+
+/*Grid setup for small devices*/
+@media only screen and (max-width: 600px) {
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+    "quotes quotes"
+    "pics pics"
+    "tweets tweets";
+  }
+
+  .ptext .border2 {
+    display: none;
+  }
 }
