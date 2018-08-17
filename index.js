@@ -1,19 +1,19 @@
 console.log("I'm running now!");
 
 var Twit = require('twit');
-
 var config = require('./config.js');
+var quotes = require('./public/quotes.js');
 var express = require('express');
 
-var server = express();
-server.use(express.static('public'))
+var app = express();
+
+//serves up static
+app.use(express.static('public'));
 
 var port = 1337;
-server.listen(port, function() {
+app.listen(port, function() {
     console.log('server listening on port ' + port);
 });
-
-
 
 var T = new Twit(config);
 
@@ -38,7 +38,7 @@ var T = new Twit(config);
 // };
 
 //
-// get media
+// get media from tweets
 //
 
 var mediaParams = {
@@ -54,24 +54,26 @@ var mediaUrlArray = [];
 T.get('statuses/user_timeline', mediaParams, gotMedia);
 
 function gotMedia(err, data, response) {
-  // mediaUrl = data[0].entities.media[0].media_url_https;
-  // console.log(mediaUrl);
+
+  console.log(response.statusCode);
   var returnedTweets = data.length;
   console.log(returnedTweets + " tweets in this response");
-
-  // for (var i = 0; i < returnedTweets; i++) {
-  //   if (data[i].entities.hasOwnProperty('media')) {
-  //     console.log(`Tweet #${i+1} has an image located at this link - ${data[i].entities.media[0].media_url_https}`);
-  //     mediaUrlArray.push(data[i].entities.media[0].media_url_https);
-  //   }
-  // }
 
   for (var i = 0; i < returnedTweets; i++) {
     if (data[i].hasOwnProperty('extended_entities') && data[i].extended_entities.media[0].type === 'photo') {
       console.log(`Tweet#${i+1} has the extended_entities prop`);
       mediaUrlArray.push(data[i].extended_entities.media[0].media_url_https);
     }
-    console.log(i);
   }
   console.log(mediaUrlArray);
 };
+
+//
+// Send tweet data to index.html
+//
+
+app.get('/', function(request, response, next) {
+  response.send(mediaUrlArray);
+  console.log("test");
+  next();
+});
