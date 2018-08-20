@@ -15,7 +15,7 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public')); //sets express view engine to handlebars 
 
 
-var port = 3393;
+var port = 3000;
 
 
 var T = new Twit(config);
