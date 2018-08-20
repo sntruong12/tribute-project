@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie-edge">
 
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-
-    <title>Bourdain</title>
-  </head>
-  <body>
 
     <!-- first parallax image -->
     <div class="pimg1">
@@ -29,9 +17,16 @@
           this will pull quotes from gears.js
         </p>
       </section>
-      <section class="section cell-two">
-        <p>instagram feed maybe a 2 by two for instagram images</p>
-      </section>
+<section class="section cell-two">
+{{#if show_media}}
+{{#each show_media}}
+<img src="{{this}}">
+{{/each}}
+{{else}}
+<p>No photos found</p>
+{{/if}}
+</section>
+
       <section class="section cell-three">
         <p>twitter feed</p>
       </section>
@@ -55,5 +50,3 @@
       </p>
     </section>
 
-  </body>
-</html>

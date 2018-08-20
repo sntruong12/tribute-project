@@ -120,3 +120,13 @@ html {
     display: none;
   }
 }
+img {
+	max-width: 100px;
+	max-height: 100px;
+	padding: 10px;
+	transition: transform .2s;
+	margin: 0 auto;
+}
+img:hover{
+	transform: scale(1.5);
+}

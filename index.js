@@ -2,41 +2,23 @@ console.log("I'm running now!");
 
 var Twit = require('twit');
 var config = require('./config.js');
-var quotes = require('./public/quotes.js');
 var express = require('express');
 
 var app = express();
 
-//serves up static
-app.use(express.static('public'));
+//add handlebars view engine
+var handlebars = require('express-handlebars')
+	.create({defaultLayout: 'main'});  //default handlebars layout page
 
-var port = 1337;
-app.listen(port, function() {
-    console.log('server listening on port ' + port);
-});
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+app.use(express.static(__dirname + '/public')); //sets express view engine to handlebars 
+
+
+var port = 3393;
+
 
 var T = new Twit(config);
-
-//
-//  search twitter for 5 recent tweets
-//
-
-// var tweetParams = {
-//   q: 'Anthony Bourdain',
-//   count: 5
-// };
-//
-// T.get('search/tweets', tweetParams, gotTweets);
-//
-// function gotTweets(err, data, response) {
-//   var tweets = data.statuses;
-//
-//   for (var i = 0; i < tweets.length; i++) {
-//     console.log(`Tweet #${i+1}: ${tweets[i].text} tweeted by @${tweets[i].user.screen_name}`);
-//   }
-//
-// };
-
 //
 // get media from tweets
 //
@@ -72,8 +54,17 @@ function gotMedia(err, data, response) {
 // Send tweet data to index.html
 //
 
-app.get('/', function(request, response, next) {
-  response.send(mediaUrlArray);
-  console.log("test");
-  next();
+app.get('/', function(req,res){ 
+  res.render('home', {
+  show_media: mediaUrlArray
+  });  //respond with homepage
+});
+
+app.use(function(req,res){  //express catch middleware if page doesn't exist
+	res.status(404);  //respond with status code
+	res.render('404'); //respond with 404 page
+});
+
+app.listen(port, function() {
+  console.log('server listening on port ' + port);
 });
