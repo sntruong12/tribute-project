@@ -29,7 +29,8 @@ var T = new Twit(config);
 var tweetParams = {
   q: 'Anthony Bourdain',
   count: 5,
-  lang: 'en'
+  lang: 'en',
+  result_type: 'popular'
 };
 
 function tweetCollector (tweetText, tweetUser) {
