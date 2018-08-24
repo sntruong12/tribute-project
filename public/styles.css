@@ -30,7 +30,7 @@ html {
   min-height: 600px;
 }
 
-.section {
+section {
   text-align: center;
   padding: 25px 25px;
   background-color: #f4f4f4;
@@ -50,13 +50,13 @@ html {
 
 /*Text over the parallax images*/
 
-.titleText .border1 {
+.titleText .bannerOne {
   background-color: #111;
   color: #fff;
   padding: 20px;
 }
 
-.titleText .border2 {
+.titleText .bannerTwo {
   background-color: #111;
   color: #fff;
   padding: 20px;
@@ -99,7 +99,7 @@ html {
     "tweets tweets tweets";
   }
 
-  .titleText .border2 {
+  .titleText .bannerTwo {
     display: none;
   }
 }
@@ -116,7 +116,7 @@ html {
     "tweets";
   }
 
-  .titleText .border2 {
+  .titleText .bannerTwo {
     display: none;
   }
 }
@@ -124,7 +124,8 @@ html {
 /* Resize Tweet icon*/
 
 .tweetIcon {
-  text
+  font-size: 50px;
+  color: #1DA1F2;
 }
 
 /* Tweet Images in cell-two */

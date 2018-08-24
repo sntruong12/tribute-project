@@ -1,7 +1,7 @@
 <!-- first parallax image -->
 <div class="parallaxOne">
   <div class="titleText">
-    <span class="border1">
+    <span class="bannerOne">
       A Tribute to Anthony Boudain
     </span>
   </div>
@@ -9,17 +9,19 @@
 
 <!-- first section  -->
 <div class="grid-wrapper">
-  <section class="section cell-one">
-    <p>
-      {{randomQuote}}
-    </p>
-    <h2>-Anthony Michael Bourdain</h2>
+  <section class="cell-one">
+    <div class="centerAlignContent">
+      <p>
+        {{randomQuote}}
+      </p>
+      <h2>-Anthony Michael Bourdain</h2>
+    </div>
   </section>
-  <section class="section cell-two">
+  <section class="cell-two">
       <img class="tweetImage" src="{{imageOne}}">
       <img class="tweetImage" src="{{imageTwo}}">
   </section>
-  <section class="section cell-three">
+  <section class="cell-three">
     <i class="fab fa-twitter-square tweetIcon"></i>
     {{#each collectionOfTweets}}
       <p class="tweetText">{{this.tweetText}}</p>
@@ -32,14 +34,14 @@
 <!-- second parallax image -->
 <div class="parallaxTwo">
   <div class="titleText">
-    <span class="border2">
+    <span class="bannerTwo">
       To Food, To Travelling, To Culture
     </span>
   </div>
 </div>
 
 <!-- second section  -->
-<section class="section">
+<section>
   <p>
     I've always admired how Bourdain was very open to experiencing different cultures. It's always been a core value of mine...to be open to one another's differences. Bourdain was able to align his values in the work that he did. He used his passion for food and travelling to connect to others.
     This is true harmony, being able to do what you love or care for in order supply yourself with all of your needs from food and shelter to self actualization.
