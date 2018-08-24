@@ -66,6 +66,7 @@ section {
 
 .grid-wrapper {
   display: grid;
+  background: #f4f4f4;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas:
@@ -77,14 +78,17 @@ section {
 
 .cell-one {
   grid-area: quotes;
+  align-self: center;
 }
 
 .cell-two {
   grid-area: pics;
+  align-self: center;
 }
 
 .cell-three {
   grid-area: tweets;
+  align-self: center;
 }
 
 /*Grid setup for medium devices*/
