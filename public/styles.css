@@ -9,8 +9,8 @@ html {
   color: #666;
 }
 
-.pimg1,
-.pimg2 {
+.parallaxOne,
+.parallaxTwo {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
@@ -20,24 +20,24 @@ html {
 
 }
 
-.pimg1 {
+.parallaxOne {
   background-image: url(images/first.jpeg);
   min-height: 100%;
 }
 
-.pimg2 {
+.parallaxTwo {
   background-image: url(images/vietnam.jpg);
   min-height: 600px;
 }
 
 .section {
   text-align: center;
-  padding: 20px 20px;
+  padding: 25px 25px;
   background-color: #f4f4f4;
   color: #666;
 }
 
-.ptext {
+.titleText {
   position: absolute;
   top: 50%;
   width: 100%;
@@ -50,13 +50,13 @@ html {
 
 /*Text over the parallax images*/
 
-.ptext .border1 {
+.titleText .border1 {
   background-color: #111;
   color: #fff;
   padding: 20px;
 }
 
-.ptext .border2 {
+.titleText .border2 {
   background-color: #111;
   color: #fff;
   padding: 20px;
@@ -99,7 +99,7 @@ html {
     "tweets tweets tweets";
   }
 
-  .ptext .border2 {
+  .titleText .border2 {
     display: none;
   }
 }
@@ -108,15 +108,42 @@ html {
 @media only screen and (max-width: 600px) {
   .grid-wrapper {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
-    "quotes quotes"
-    "pics pics"
-    "tweets tweets";
+    "quotes"
+    "pics"
+    "tweets";
   }
 
-  .ptext .border2 {
+  .titleText .border2 {
     display: none;
   }
+}
+
+/* Resize Tweet icon*/
+
+.tweetIcon {
+  text
+}
+
+/* Tweet Images in cell-two */
+
+.tweetImage {
+  display: block;
+  max-width: 300px;
+  max-height: 300px;
+  padding: 50px 0px;
+  transition: transform .5s;
+  margin: 0 auto;
+}
+
+.tweetImage:hover {
+	transform: scale(1.25);
+}
+
+/* Tweet text styling */
+
+.tweetText {
+  padding: 0 25px;
 }

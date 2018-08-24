@@ -1,0 +1,49 @@
+<!-- first parallax image -->
+<div class="parallaxOne">
+  <div class="titleText">
+    <span class="border1">
+      A Tribute to Anthony Boudain
+    </span>
+  </div>
+</div>
+
+<!-- first section  -->
+<div class="grid-wrapper">
+  <section class="section cell-one">
+    <p>
+      {{randomQuote}}
+    </p>
+    <h2>-Anthony Michael Bourdain</h2>
+  </section>
+  <section class="section cell-two">
+      <img class="tweetImage" src="{{imageOne}}">
+      <img class="tweetImage" src="{{imageTwo}}">
+  </section>
+  <section class="section cell-three">
+    <i class="fab fa-twitter-square tweetIcon"></i>
+    {{#each collectionOfTweets}}
+      <p class="tweetText">{{this.tweetText}}</p>
+      <p>-{{this.tweetUser}}</p>
+    {{/each}}
+  </section>
+</div>
+
+
+<!-- second parallax image -->
+<div class="parallaxTwo">
+  <div class="titleText">
+    <span class="border2">
+      To Food, To Travelling, To Culture
+    </span>
+  </div>
+</div>
+
+<!-- second section  -->
+<section class="section">
+  <p>
+    I've always admired how Bourdain was very open to experiencing different cultures. It's always been a core value of mine...to be open to one another's differences. Bourdain was able to align his values in the work that he did. He used his passion for food and travelling to connect to others.
+    This is true harmony, being able to do what you love or care for in order supply yourself with all of your needs from food and shelter to self actualization.
+    I'm not sure who Bourdain was outside of his professional work, but through his work we can see the importance and value that can be found in travelling. Putting yourself out of your comfort zone is the best way to grow and travelling is a great way to do this. I'm certain that travelling the world was able to help Bourdain grow.
+    The most valuable message that I've been able to extract from his professional work is to understand that at the end of the day everyone is a human being. We all have at the root the same experience but these experiences are covered by how we frame it through one's cultural lens. You don't have to force love but at the very least you must try to understand and coexist.
+  </p>
+</section>

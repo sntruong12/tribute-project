@@ -2,13 +2,18 @@ console.log("I'm running now!");
 
 var Twit = require('twit');
 var config = require('./config.js');
-var quotes = require('./public/quotes.js');
 var express = require('express');
+var quotes = require('./public/quotes.js');
 
 var app = express();
 
-//serves up static
-app.use(express.static('public'));
+//add handlebars view engine
+var handlebars = require('express-handlebars')
+  .create({defaultLayout:'main'});
+
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+app.use(express.static(__dirname + '/public'));
 
 var port = 1337;
 app.listen(port, function() {
@@ -18,24 +23,31 @@ app.listen(port, function() {
 var T = new Twit(config);
 
 //
-//  search twitter for 5 recent tweets
+//  search twitter for recent tweets
 //
 
-// var tweetParams = {
-//   q: 'Anthony Bourdain',
-//   count: 5
-// };
-//
-// T.get('search/tweets', tweetParams, gotTweets);
-//
-// function gotTweets(err, data, response) {
-//   var tweets = data.statuses;
-//
-//   for (var i = 0; i < tweets.length; i++) {
-//     console.log(`Tweet #${i+1}: ${tweets[i].text} tweeted by @${tweets[i].user.screen_name}`);
-//   }
-//
-// };
+var tweetParams = {
+  q: 'Anthony Bourdain',
+  count: 5
+};
+
+function tweetCollector (tweetText, tweetUser) {
+  this.tweetText = tweetText;
+  this.tweetUser = tweetUser;
+};
+
+var recentTweetCollection =[];
+
+T.get('search/tweets', tweetParams, gotTweets);
+
+function gotTweets(err, data, response) {
+  var tweets = data.statuses;
+
+  for (var i = 0; i < 3; i++) {
+    console.log(`Tweet #${i+1}: ${tweets[i].text} tweeted by @${tweets[i].user.screen_name}`);
+    recentTweetCollection[i] = new tweetCollector(tweets[i].text, tweets[i].user.screen_name);
+  }
+};
 
 //
 // get media from tweets
@@ -55,7 +67,6 @@ T.get('statuses/user_timeline', mediaParams, gotMedia);
 
 function gotMedia(err, data, response) {
 
-  console.log(response.statusCode);
   var returnedTweets = data.length;
   console.log(returnedTweets + " tweets in this response");
 
@@ -69,11 +80,20 @@ function gotMedia(err, data, response) {
 };
 
 //
-// Send tweet data to index.html
+// Get random number for quotes section
 //
 
-app.get('/', function(request, response, next) {
-  response.send(mediaUrlArray);
-  console.log("test");
-  next();
+var randomNum = Math.floor(Math.random() * quotes.length);
+
+//
+// Send tweet data and quotes to home.handlebars
+//
+
+app.get('/', function(req,res){
+  res.render('home', {
+  imageOne: mediaUrlArray[0],
+  imageTwo: mediaUrlArray[1],
+  collectionOfTweets: recentTweetCollection,
+  randomQuote: quotes[randomNum]
+  });
 });
