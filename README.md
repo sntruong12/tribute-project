@@ -11,7 +11,7 @@ Additionally a random quote from Bourdain is loaded every time the app is launch
 
 Challenges  
 ---
-The first challenge I faced here was figuring out where I can pull images to post on the page. The original plan was to use Instagram's API to pull a user's images. This was quickly dismissed as their API doesn't allow you to pull images from specific users. I ended up deciding to use Twit to grab recent images from Bourdain's twitter timeline.  
+The first challenge I faced here was figuring out where I can pull images to post on the page. I didn't want to load images locally, I wanted to pushed myself and learn how to get images using an API. The original plan was to use Instagram's API to pull a user's images. This was quickly dismissed as their API doesn't allow you to pull images from specific users. I ended up deciding to use Twit to grab recent images from Bourdain's twitter timeline.  
 
 Another challenge I faced was serving up the data from Twitter to the front end of the website. I was able to use the view engine handlebars and express to help achieve this. Specifically the built in method .get in express allowed me to serve the Twitter data (images and popular tweets) when the user loads the root directory or home page.  
 
