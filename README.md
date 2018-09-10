@@ -19,7 +19,7 @@ Deploying Locally
 ---
 Create a file in the root directory called config.js.  
 Create a Twitter API account.  
-This file will contain your credentials from your Twitter API account formatted in the following way.  
+config.js will contain your credentials from your Twitter API account formatted in the following way.  
 module.exports = {
   consumer_key:         'x',
   consumer_secret:      'x',
@@ -27,4 +27,4 @@ module.exports = {
   access_token_secret:  'x',
 };  
 Run node index.js from the root directory.  
-Open a browser and navigate to http://localhost:1337/  
+Open a browser and navigate to http://localhost:1337/ or the specifics port from index.js
